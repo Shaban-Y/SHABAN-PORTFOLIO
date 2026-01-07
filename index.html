@@ -19,7 +19,7 @@
       line-height: 1.6;
     }
 
-    /*  MENU BUTTON  */
+    /* MENU BUTTON */
     .menu-btn {
       position: fixed;
       top: 20px;
@@ -35,7 +35,7 @@
       pointer-events: none;
     }
 
-    /*  SIDE MENU  */
+    /* SIDE MENU */
     .side-menu {
       position: fixed;
       top: 0;
@@ -49,9 +49,7 @@
       z-index: 4999;
     }
 
-    .side-menu.active {
-      right: 0;
-    }
+    .side-menu.active { right: 0; }
 
     .close-btn {
       position: absolute;
@@ -111,7 +109,7 @@
       fill: #ffffff;
     }
 
-    /*  HERO  */
+    /* HERO */
     .hero {
       height: 100vh;
       display: flex;
@@ -121,7 +119,6 @@
       background-size: cover;
       background-position: center;
       position: relative;
-      overflow: hidden;
     }
 
     .hero::before {
@@ -139,9 +136,7 @@
       max-width: 750px;
     }
 
-    .terminal h1 {
-      font-size: 2.6rem;
-    }
+    .terminal h1 { font-size: 2.6rem; }
 
     .subtitle, .location {
       color: #94a3b8;
@@ -166,7 +161,7 @@
       margin-left: 10px;
     }
 
-    /*  SCROLL INDICATOR  */
+    /* SCROLL INDICATOR */
     .scroll-indicator {
       position: absolute;
       bottom: 30px;
@@ -205,7 +200,7 @@
       100% { transform: translateY(0) rotate(-45deg); }
     }
 
-    /*  SCROLL REVEAL  */
+    /* SCROLL REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -217,28 +212,12 @@
       transform: translateY(0);
     }
 
-    /*  CONTENT  */
-    .section {
-      padding: 70px 10%;
-    }
+    /* CONTENT */
+    .section { padding: 70px 10%; }
 
-    h2 {
-      margin-bottom: 20px;
-      color: #38bdf8;
-    }
+    h2 { margin-bottom: 20px; color: #38bdf8; }
 
-    .edu, .project, .ref {
-      margin-bottom: 20px;
-    }
-
-    .edu span {
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
-
-    .skill {
-      margin-bottom: 15px;
-    }
+    .skill { margin-bottom: 15px; }
 
     .bar {
       background: #1e293b;
@@ -246,9 +225,12 @@
       overflow: hidden;
     }
 
+    /* ✅ ANIMATED SKILL BAR */
     .bar div {
+      width: 0;
       height: 10px;
       background: #38bdf8;
+      transition: width 1.5s ease-in-out;
     }
 
     footer {
@@ -261,10 +243,8 @@
 
 <body>
 
-<!-- MENU BUTTON -->
 <div id="menuBtn" class="menu-btn" onclick="openMenu()">☰</div>
 
-<!-- SIDE MENU -->
 <div id="sideMenu" class="side-menu">
   <div class="close-btn" onclick="closeMenu()">✕</div>
 
@@ -281,9 +261,8 @@
     <p>📍 Nairobi, Kenya</p>
     <p>📞 +254 797 639 282</p>
     <p>✉ shabanyussuf2004@gmail.com</p>
-
     <div class="socials">
-      <a class="social-btn" href="https://github.com/shaban-y" target="_blank" aria-label="GitHub">
+      <a class="social-btn" href="https://github.com/shaban-y" target="_blank">
         <svg viewBox="0 0 24 24">
           <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.56v-2.17c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.67 1.25 3.32.96.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 012.9-.39c.98 0 1.97.13 2.9.39 2.21-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.73.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.67.41.36.77 1.07.77 2.16v3.2c0 .31.21.67.79.56A11.51 11.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/>
         </svg>
@@ -331,25 +310,21 @@
 <!-- EDUCATION -->
 <section class="section reveal" id="education">
   <h2>Education</h2>
-
   <div class="edu reveal">
     <h3>Thika Technical Training Institute</h3>
     <p>Diploma in Computer Science (Undergraduate)</p>
     <span>2023 – 2026</span>
   </div>
-
   <div class="edu reveal">
     <h3>Otieno Oyoo High School</h3>
     <p>KCSE – Grade C (Plain)</p>
     <span>2019 – 2023</span>
   </div>
-
   <div class="edu reveal">
     <h3>Rangwe Township Primary School</h3>
     <p>KCPE – 334 Marks</p>
     <span>2015 – 2018</span>
   </div>
-
   <div class="edu reveal">
     <h3>Embakasi Garrison Kindergarten</h3>
     <p>Early Childhood Education</p>
@@ -359,26 +334,24 @@
 <!-- SKILLS -->
 <section class="section reveal" id="skills">
   <h2>Skills</h2>
-
-  <div class="skill reveal"><span>HTML, CSS</span><div class="bar"><div style="width:90%"></div></div></div>
-  <div class="skill reveal"><span>JavaScript</span><div class="bar"><div style="width:80%"></div></div></div>
-  <div class="skill reveal"><span>Node.js</span><div class="bar"><div style="width:60%"></div></div></div>
-  <div class="skill reveal"><span>Web Editing & Frontend Design</span><div class="bar"><div style="width:85%"></div></div></div>
-  <div class="skill reveal"><span>Microsoft Excel</span><div class="bar"><div style="width:75%"></div></div></div>
-  <div class="skill reveal"><span>Customer Service & Communication</span><div class="bar"><div style="width:85%"></div></div></div>
-  <div class="skill reveal"><span>Teamwork & Time Management</span><div class="bar"><div style="width:80%"></div></div></div>
+  <div class="skill reveal"><span>HTML & CSS</span><div class="bar"><div data-level="90"></div></div></div>
+  <div class="skill reveal"><span>JavaScript</span><div class="bar"><div data-level="80"></div></div></div>
+  <div class="skill reveal"><span>Node.js</span><div class="bar"><div data-level="60"></div></div></div>
+  <div class="skill reveal"><span>Web Editing & Frontend Design</span><div class="bar"><div data-level="85"></div></div></div>
+  <div class="skill reveal"><span>Microsoft Excel</span><div class="bar"><div data-level="75"></div></div></div>
+  <div class="skill reveal"><span>Customer Service & Communication</span><div class="bar"><div data-level="85"></div></div></div>
+  <div class="skill reveal"><span>Teamwork & Time Management</span><div class="bar"><div data-level="80"></div></div></div>
 </section>
 
 <!-- PROJECTS -->
 <section class="section reveal" id="projects">
   <h2>Projects</h2>
-
   <div class="project reveal">
     <h3>Personal Web Portfolio</h3>
     <p>
       Designed and developed a responsive personal portfolio using HTML, CSS, and
-      JavaScript. Implemented interactive navigation, scroll animations, and deployed
-      the site using GitHub Pages.
+      JavaScript. Implemented interactive navigation, scroll animations, animated skill
+      bars, and deployed the site using GitHub Pages.
     </p>
   </div>
 </section>
@@ -393,18 +366,8 @@
 <!-- REFEREES -->
 <section class="section reveal" id="referees">
   <h2>Referees</h2>
-
-  <div class="ref reveal">
-    <strong>Mr. Godfrey Kisiangani</strong><br>
-    Senior Master / Class Tutor<br>
-    📞 +254 720 005 686
-  </div>
-
-  <div class="ref reveal">
-    <strong>Madam Linet Kawira</strong><br>
-    Course Tutor / Web Design Lecturer<br>
-    📞 +254 715 559 471
-  </div>
+  <p><strong>Mr. Godfrey Kisiangani</strong><br>📞 +254 720 005 686</p>
+  <p><strong>Madam Linet Kawira</strong><br>📞 +254 715 559 471</p>
 </section>
 
 <footer>
@@ -412,16 +375,13 @@
 </footer>
 
 <script>
-  const menu = document.getElementById("sideMenu");
-  const menuBtn = document.getElementById("menuBtn");
-
   function openMenu() {
-    menu.classList.add("active");
+    sideMenu.classList.add("active");
     menuBtn.classList.add("hidden");
   }
 
   function closeMenu() {
-    menu.classList.remove("active");
+    sideMenu.classList.remove("active");
     menuBtn.classList.remove("hidden");
   }
 
@@ -429,15 +389,23 @@
     document.getElementById("objective").scrollIntoView({ behavior: "smooth" });
   }
 
-  const observer = new IntersectionObserver(entries => {
+  /* Reveal + Skill Animation */
+  const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("active");
+
+        const bars = entry.target.querySelectorAll(".bar div");
+        bars.forEach(bar => {
+          bar.style.width = bar.dataset.level + "%";
+        });
+
+        revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.3 });
 
-  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 </script>
 
 </body>
