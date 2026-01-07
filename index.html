@@ -19,16 +19,23 @@
       line-height: 1.6;
     }
 
-    /* ================= MENU ================= */
+    /* ========== MENU BUTTON ========== */
     .menu-btn {
       position: fixed;
       top: 20px;
       right: 25px;
       font-size: 28px;
       cursor: pointer;
-      z-index: 3000;
+      z-index: 4000;
+      transition: opacity 0.3s ease;
     }
 
+    .menu-btn.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ========== SIDE MENU ========== */
     .side-menu {
       position: fixed;
       top: 0;
@@ -39,7 +46,7 @@
       color: #020617;
       padding: 30px;
       transition: right 0.4s ease;
-      z-index: 2999;
+      z-index: 3999;
     }
 
     .side-menu.active {
@@ -47,13 +54,16 @@
     }
 
     .close-btn {
-      font-size: 22px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 26px;
       cursor: pointer;
-      text-align: right;
+      z-index: 4001;
     }
 
     .menu-links {
-      margin-top: 60px;
+      margin-top: 80px;
       display: flex;
       flex-direction: column;
     }
@@ -72,7 +82,7 @@
       font-size: 14px;
     }
 
-    /* ================= HERO ================= */
+    /* ========== HERO ========== */
     .hero {
       height: 100vh;
       display: flex;
@@ -88,30 +98,24 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(2, 6, 23, 0.7);
+      background: rgba(2, 6, 23, 0.75);
     }
 
     .terminal {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       text-align: center;
       padding: 40px;
-      max-width: 650px;
+      max-width: 700px;
     }
 
     .terminal h1 {
       font-size: 2.4rem;
-      margin-bottom: 10px;
     }
 
-    .subtitle {
+    .subtitle, .location {
       color: #94a3b8;
       margin-top: 10px;
-    }
-
-    .location {
-      margin-top: 10px;
-      color: #94a3b8;
     }
 
     .btn {
@@ -125,7 +129,65 @@
       font-weight: 500;
     }
 
-    /* ================= SECTIONS ================= */
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      margin-left: 10px;
+    }
+
+    /* ========== SCROLL INDICATOR ========== */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .scroll-indicator span {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #38bdf8;
+      animation: glow 2s infinite alternate;
+    }
+
+    .arrow {
+      width: 14px;
+      height: 14px;
+      border-left: 2px solid #38bdf8;
+      border-bottom: 2px solid #38bdf8;
+      transform: rotate(-45deg);
+      margin: 10px auto 0;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #38bdf8; }
+      to { text-shadow: 0 0 25px #38bdf8; }
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0) rotate(-45deg); }
+      50% { transform: translateY(12px) rotate(-45deg); }
+      100% { transform: translateY(0) rotate(-45deg); }
+    }
+
+    /* ========== SCROLL REVEAL ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== CONTENT ========== */
     .section {
       padding: 70px 10%;
     }
@@ -135,7 +197,7 @@
       color: #38bdf8;
     }
 
-    .edu {
+    .edu, .project, .ref {
       margin-bottom: 20px;
     }
 
@@ -159,46 +221,29 @@
       background: #38bdf8;
     }
 
-    .project {
-      background: #020617;
-      border: 1px solid #1e293b;
-      padding: 20px;
-      border-radius: 8px;
-    }
-
-    .list li {
-      margin-bottom: 8px;
-    }
-
     footer {
       text-align: center;
       padding: 25px;
       color: #64748b;
     }
-    .btn.secondary {
-  background: transparent;
-  border: 1px solid #38bdf8;
-  color: #38bdf8;
-  margin-left: 10px;
-}
-
   </style>
 </head>
 
 <body>
 
 <!-- MENU BUTTON -->
-<div class="menu-btn" onclick="openMenu()">☰</div>
+<div id="menuBtn" class="menu-btn" onclick="openMenu()">☰</div>
 
 <!-- SIDE MENU -->
 <div id="sideMenu" class="side-menu">
   <div class="close-btn" onclick="closeMenu()">✕</div>
 
   <nav class="menu-links">
-    <a href="#objective" onclick="closeMenu()">Career Objective</a>
+    <a href="#objective" onclick="closeMenu()">Objective</a>
     <a href="#education" onclick="closeMenu()">Education</a>
     <a href="#skills" onclick="closeMenu()">Skills</a>
     <a href="#projects" onclick="closeMenu()">Projects</a>
+    <a href="#languages" onclick="closeMenu()">Languages</a>
     <a href="#referees" onclick="closeMenu()">Referees</a>
   </nav>
 
@@ -213,84 +258,64 @@
 <section class="hero">
   <div class="terminal">
     <p>HELLO, I'M</p>
-    <h1>SHABAN YUSSUF </h1>
+    <h1>SHABAN YUSSUF</h1>
     <p class="subtitle">Computer Science Undergraduate • Frontend Developer</p>
     <p class="location">📍 Nairobi, Kenya</p>
+
     <a class="btn" target="_blank"
        href="https://docs.google.com/document/d/1PVGsWNw-nLbKaZvFdvT_8p5IrfRSNmrg/edit">
-      Download CV
+      Download Resume
     </a>
-    <a class="btn secondary" href="mailto:shabanyussuf2004@gmail.com?...">
-        Contact Me
-      </a>
-      
 
+    <a class="btn secondary" target="_blank"
+       href="https://mail.google.com/mail/?view=cm&fs=1&to=shabanyussuf2004@gmail.com&su=Portfolio%20Contact">
+      Contact Me
+    </a>
+  </div>
+
+  <div class="scroll-indicator" onclick="scrollDown()">
+    <span>SCROLL</span>
+    <div class="arrow"></div>
   </div>
 </section>
 
 <!-- OBJECTIVE -->
-<section class="section" id="objective">
+<section class="section reveal" id="objective">
   <h2>Career Objective</h2>
   <p>
     Motivated and detail-oriented Computer Science undergraduate seeking entry-level
-    opportunities in banking, customer service, or IT-related roles.
+    opportunities in banking, customer service, or IT-related roles. Eager to apply
+    strong computer skills, numerical accuracy, and communication skills while gaining
+    real-world experience.
   </p>
 </section>
 
 <!-- EDUCATION -->
-<section class="section" id="education">
+<section class="section reveal" id="education">
   <h2>Education</h2>
 
-  <div class="edu">
+  <div class="edu reveal">
     <h3>Thika Technical Training Institute</h3>
     <p>Diploma in Computer Science (Undergraduate)</p>
     <span>2023 – 2026</span>
   </div>
 
-  <div class="edu">
+  <div class="edu reveal">
     <h3>Otieno Oyoo High School</h3>
     <p>KCSE – Grade C (Plain)</p>
     <span>2019 – 2023</span>
   </div>
 
-  <div class="edu">
+  <div class="edu reveal">
     <h3>Rangwe Township Primary School</h3>
     <p>KCPE – 334 Marks</p>
     <span>2015 – 2018</span>
   </div>
 
-  <div class="edu">
+  <div class="edu reveal">
     <h3>Embakasi Garrison Kindergarten</h3>
     <p>Early Childhood Education</p>
   </div>
-</section>
-
-<!-- SKILLS -->
-<section class="section" id="skills">
-  <h2>Skills</h2>
-  <div class="skill"><span>HTML & CSS</span><div class="bar"><div style="width:90%"></div></div></div>
-  <div class="skill"><span>JavaScript</span><div class="bar"><div style="width:80%"></div></div></div>
-  <div class="skill"><span>Node.js</span><div class="bar"><div style="width:60%"></div></div></div>
-  <div class="skill"><span>MS Excel</span><div class="bar"><div style="width:75%"></div></div></div>
-</section>
-
-<!-- PROJECTS -->
-<section class="section" id="projects">
-  <h2>Projects</h2>
-  <div class="project">
-    <h3>Personal Web Portfolio</h3>
-    <p>
-      Designed and developed a responsive personal portfolio using HTML,
-      CSS and JavaScript. Deployed on GitHub Pages.
-    </p>
-  </div>
-</section>
-
-<!-- REFEREES -->
-<section class="section" id="referees">
-  <h2>Referees</h2>
-  <p><strong>Mr. Godfrey Kisiangani</strong><br>📞 +254 720 005 686</p>
-  <p><strong>Madam Linet Kawira</strong><br>📞 +254 715 559 471</p>
 </section>
 
 <footer>
@@ -298,12 +323,32 @@
 </footer>
 
 <script>
+  const menu = document.getElementById("sideMenu");
+  const menuBtn = document.getElementById("menuBtn");
+
   function openMenu() {
-    document.getElementById("sideMenu").classList.add("active");
+    menu.classList.add("active");
+    menuBtn.classList.add("hidden");
   }
+
   function closeMenu() {
-    document.getElementById("sideMenu").classList.remove("active");
+    menu.classList.remove("active");
+    menuBtn.classList.remove("hidden");
   }
+
+  function scrollDown() {
+    document.getElementById("objective").scrollIntoView({ behavior: "smooth" });
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 </script>
 
 </body>
